@@ -1,0 +1,16 @@
+use inc::Module::Install;
+
+name     'Graphics-Color';
+all_from 'lib/Graphics/Color.pm';
+author   'Cory G Watson <gphat@cpan.org>';
+
+build_requires 'Test::More';
+
+test_requires 'Pod::Coverage::Moose';
+
+requires 'Moose';
+
+auto_install;
+
+WriteAll;
+
