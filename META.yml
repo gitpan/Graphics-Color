@@ -1,5 +1,5 @@
 ---
-abstract: ~
+abstract: 'Device and library agnostic color spaces.'
 author:
   - 'Cory G Watson <gphat@cpan.org>'
 build_requires:
@@ -19,4 +19,4 @@ no_index:
 requires:
   Moose: 0
   MooseX::Clone: 0
-version: 0.02
+version: 0.03
