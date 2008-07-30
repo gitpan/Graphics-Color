@@ -17,6 +17,6 @@ no_index:
     - inc
     - t
 requires:
-  Moose: 0
-  MooseX::Clone: 0
-version: 0.05
+  Moose: 0.54
+  MooseX::Clone: 0.03
+version: 0.06
