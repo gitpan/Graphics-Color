@@ -5,7 +5,7 @@ use Moose::Util::TypeConstraints;
 with 'MooseX::Clone';
 
 our $AUTHORITY = 'cpan:GPHAT';
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 subtype 'Graphics::Color::Number360OrLess'
     => as 'Num',
@@ -16,6 +16,17 @@ subtype 'Graphics::Color::NumberOneOrLess'
     => as 'Num',
     => where { $_ <= 1 && $_ >= 0 },
     => message { "This number ($_) is not less or equal to one!" };
+
+sub derive {
+    my ($self, $args) = @_;
+
+    return unless ref($args) eq 'HASH';
+    my $new = $self->clone;
+    foreach my $key (keys %{ $args }) {
+        $new->$key($args->{$key}) if($new->can($key));
+    }
+    return $new;
+}
 
 __PACKAGE__->meta->make_immutable;
 
@@ -60,9 +71,23 @@ L<YUV|Graphics::Color::YUV>
 
 =head1 METHODS
 
-=head1 I<new>
+=over 4
+
+=item I<new>
 
 Makes a new, useless Graphics::Color object. There's no reason to do this.
+
+=item I<derive>
+
+Clone this color but allow one of more of it's attributes to change by passing
+in a hashref of options:
+
+  my $new = $color->derive({ attr => $newvalue });
+  
+The returned color will be identical to the cloned one, save the attributes
+specified.
+
+=back
 
 =head1 AUTHOR
 
