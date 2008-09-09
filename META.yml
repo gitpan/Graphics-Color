@@ -3,7 +3,6 @@ abstract: 'Device and library agnostic color spaces.'
 author:
   - 'Cory G Watson <gphat@cpan.org>'
 build_requires:
-  Pod::Coverage::Moose: 0
   Test::More: 0
 distribution_type: module
 generated_by: 'Module::Install version 0.75'
@@ -20,4 +19,4 @@ requires:
   Moose: 0.54
   MooseX::Clone: 0.03
   MooseX::Storage: 0.14
-version: 0.14
+version: 0.15
