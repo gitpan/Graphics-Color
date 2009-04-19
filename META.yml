@@ -17,7 +17,7 @@ no_index:
     - t
 requires:
   Color::Library: 0.02
-  Moose: 0.54
+  Moose: 0.74
   MooseX::Clone: 0.03
-  MooseX::Storage: 0.14
-version: 0.19
+  MooseX::Storage: 0.17
+version: 0.20
