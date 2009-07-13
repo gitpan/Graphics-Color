@@ -25,4 +25,4 @@ requires:
   MooseX::Clone: 0.03
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.22
+version: 0.23
