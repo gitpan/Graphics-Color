@@ -113,6 +113,34 @@ sub from_color_library {
 	);
 }
 
+sub from_hex_string {
+    my ($self, $hex) = @_;
+
+    # Get rid of the leading # if it's there
+    $hex =~ s/^#//g;
+    $hex = lc($hex);
+
+    my $len = length($hex);
+
+    if(length($hex) == 3) {
+        $hex =~ /([a-f0-9])([a-f0-9])([a-f0-9])/;
+        $hex = "$1$1$2$2$3$3";
+    }
+
+    if(length($hex) == 6) {
+        $hex =~ /([a-f0-9]{2})([a-f0-9]{2})([a-f0-9]{2})/;
+
+        return Graphics::Color::RGB->new(
+            red => hex($1) / 255,
+            blue => hex($2) / 255,
+            green => hex($3) / 255
+        );
+    }
+
+    # Not a valid hex color
+    return undef;
+}
+
 sub to_hsl {
 	my ($self) = @_;
 
