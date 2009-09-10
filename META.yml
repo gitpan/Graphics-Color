@@ -22,7 +22,9 @@ no_index:
 requires:
   Color::Library: 0.02
   Moose: 0.74
+  MooseX::Aliases: 0.03
   MooseX::Clone: 0.03
+  MooseX::Types: 0.19
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.23
+version: 0.24
