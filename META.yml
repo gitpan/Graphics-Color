@@ -27,4 +27,4 @@ requires:
   MooseX::Types: 0.19
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.24
+version: 0.25
