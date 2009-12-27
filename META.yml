@@ -24,7 +24,8 @@ requires:
   Moose: 0.74
   MooseX::Aliases: 0.03
   MooseX::Clone: 0.03
+  MooseX::Storage: 0.23
   MooseX::Types: 0.19
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.26
+version: 0.27
