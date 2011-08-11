@@ -3,29 +3,28 @@ abstract: 'Device and library agnostic color spaces.'
 author:
   - 'Cory G Watson <gphat@cpan.org>'
 build_requires:
-  ExtUtils::MakeMaker: 6.42
   Test::More: 0
   Test::Number::Delta: 0
 configure_requires:
-  ExtUtils::MakeMaker: 6.42
-distribution_type: module
-generated_by: 'Module::Install version 0.91'
+  ExtUtils::MakeMaker: 6.30
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.200007, CPAN::Meta::Converter version 2.110440'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: Graphics-Color
-no_index:
-  directory:
-    - inc
-    - t
 requires:
-  Color::Library: 0.02
-  Moose: 0.74
-  MooseX::Aliases: 0.03
-  MooseX::Clone: 0.03
-  MooseX::Storage: 0.23
-  MooseX::Types: 0.19
+  Color::Library: 0
+  Moose: 0
+  Moose::Role: 0
+  Moose::Util::TypeConstraints: 0
+  MooseX::Aliases: 0.10
+  MooseX::Clone: 0
+  MooseX::Storage::Deferred: 0
+  MooseX::Types: 0
+  MooseX::Types::Moose: 0
 resources:
-  license: http://dev.perl.org/licenses/
-version: 0.28
+  homepage: http://github.com/gphat/graphics-color
+  repository: http://github.com/gphat/graphics-color
+version: 0.29

@@ -1,4 +1,7 @@
 package Graphics::Color::HSV;
+BEGIN {
+  $Graphics::Color::HSV::VERSION = '0.29';
+}
 use Moose;
 use MooseX::Aliases;
 
@@ -9,31 +12,41 @@ with 'Graphics::Color::Equal';
 use Graphics::Color::Types qw(Number360OrLess NumberOneOrLess);
 use Graphics::Color::RGB;
 
+
 has 'hue' => (
     is => 'rw',
     isa => Number360OrLess,
     default => 1,
     alias => 'h'
 );
+
+
 has 'saturation' => (
     is => 'rw',
     isa => NumberOneOrLess,
     default => 1,
     alias => 's'
 );
+
+
 has 'value' => (
     is => 'rw',
     isa => NumberOneOrLess,
     default => 1,
     alias => 'v'
 );
+
+
 has 'alpha' => (
     is => 'rw',
     isa => NumberOneOrLess,
     default => 1,
     alias => 'a'
 );
+
+
 has 'name' => ( is => 'rw', isa => 'Str' );
+
 
 sub as_string {
     my ($self) = @_;
@@ -42,6 +55,7 @@ sub as_string {
         $self->hue, $self->saturation, $self->value, $self->alpha
     );
 }
+
 
 sub as_percent_string {
     my ($self) = @_;
@@ -52,17 +66,20 @@ sub as_percent_string {
     );
 }
 
+
 sub as_array {
     my ($self) = @_;
 
     return ($self->hue, $self->saturation, $self->value);
 }
 
+
 sub as_array_with_alpha {
     my ($self) = @_;
 
     return ($self->hue, $self->saturation, $self->value, $self->alpha);
 }
+
 
 sub equal_to {
     my ($self, $other) = @_;
@@ -84,6 +101,8 @@ sub equal_to {
 
     return 1;
 }
+
+
 
 sub to_rgb {
 	my ($self) = @_;
@@ -151,15 +170,15 @@ __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
 __END__
+=pod
 
 =head1 NAME
 
-Graphics::Color::HSV - HSV color space
+Graphics::Color::HSV
 
-=head1 DESCRIPTION
+=head1 VERSION
 
-Graphics::Color::HSV represents a Color in an RGB color space.  HSLV stands for
-B<Hue> B<Saturation> and B<Value>.  HSV is closely related to HSL.
+version 0.29
 
 =head1 SYNOPSIS
 
@@ -167,25 +186,16 @@ B<Hue> B<Saturation> and B<Value>.  HSV is closely related to HSL.
 
     my $color = Graphics::Color::HSV->new({
         hue         => 120,
-        saturation  => .5
+        saturation  => .5,
         value   	=> .25,
     });
 
-=head1 CONSTRUCTOR
+=head1 DESCRIPTION
 
-=head2 Graphics::Color::HSV->new(%options)
+Graphics::Color::HSV represents a Color in an RGB color space.  HSLV stands for
+B<Hue> B<Saturation> and B<Value>.  HSV is closely related to HSL.
 
-Creates a new Graphics::Color::HSV.
-
-=head1 METHODS
-
-=head2 equal_to
-
-Compares this color to the provided one.  Returns 1 if true, else 0;
-
-=head2 not_equal_to
-
-The opposite of equal_to.
+=head1 ATTRIBUTES
 
 =head2 hue
 
@@ -213,6 +223,8 @@ Set/Get the alpha component of this Color.
 
 Get the name of this color.  Only valid if the color was created by name.
 
+=head1 METHODS
+
 =head2 as_string
 
 Get a string version of this Color in the form of
@@ -231,21 +243,28 @@ Get the HSV values as an array
 
 Get the HSVA values as an array
 
+=head2 equal_to
+
+Compares this color to the provided one.  Returns 1 if true, else 0;
+
+=head2 not_equal_to
+
+The opposite of equal_to.
+
 =head2 to_rgb
 
 Creates this HSV color in RGB space.  Returns a L<Graphics::Color::RGB> object.
 
 =head1 AUTHOR
 
-Cory Watson, C<< <gphat@cpan.org> >>
+Cory G Watson <gphat@cpan.org>
 
-=head1 SEE ALSO
+=head1 COPYRIGHT AND LICENSE
 
-perl(1), L<<a href="http://en.wikipedia.org/wiki/HSL_and_HSV">Wikipedia</a>>
+This software is copyright (c) 2011 by Cold Hard Code, LLC.
 
-=head1 COPYRIGHT & LICENSE
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
-Copyright 2008 - 2009 by Cory G Watson
+=cut
 
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.

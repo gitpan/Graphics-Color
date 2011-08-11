@@ -1,18 +1,62 @@
-use inc::Module::Install 0.75;
 
-name     'Graphics-Color';
-all_from 'lib/Graphics/Color.pm';
-author   'Cory G Watson <gphat@cpan.org>';
+use strict;
+use warnings;
 
-build_requires 'Test::More';
-test_requires 'Test::Number::Delta';
 
-requires 'Color::Library' => '0.02';
-requires 'Moose' => '0.74';
-requires 'MooseX::Aliases' => '0.03';
-requires 'MooseX::Clone' => '0.03';
-requires 'MooseX::Storage' => '0.23';
-requires 'MooseX::Types' => '0.19';
 
-WriteAll;
+use ExtUtils::MakeMaker 6.30;
+
+
+
+my %WriteMakefileArgs = (
+  'ABSTRACT' => 'Device and library agnostic color spaces.',
+  'AUTHOR' => 'Cory G Watson <gphat@cpan.org>',
+  'BUILD_REQUIRES' => {
+    'Test::More' => '0',
+    'Test::Number::Delta' => '0'
+  },
+  'CONFIGURE_REQUIRES' => {
+    'ExtUtils::MakeMaker' => '6.30'
+  },
+  'DISTNAME' => 'Graphics-Color',
+  'EXE_FILES' => [],
+  'LICENSE' => 'perl',
+  'NAME' => 'Graphics::Color',
+  'PREREQ_PM' => {
+    'Color::Library' => '0',
+    'Moose' => '0',
+    'Moose::Role' => '0',
+    'Moose::Util::TypeConstraints' => '0',
+    'MooseX::Aliases' => '0.10',
+    'MooseX::Clone' => '0',
+    'MooseX::Storage::Deferred' => '0',
+    'MooseX::Types' => '0',
+    'MooseX::Types::Moose' => '0'
+  },
+  'VERSION' => '0.29',
+  'test' => {
+    'TESTS' => 't/*.t t/author/*.t'
+  }
+);
+
+
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
+  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
+  my $pp = $WriteMakefileArgs{PREREQ_PM};
+  for my $mod ( keys %$br ) {
+    if ( exists $pp->{$mod} ) {
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod};
+    }
+    else {
+      $pp->{$mod} = $br->{$mod};
+    }
+  }
+}
+
+delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
+
+WriteMakefile(%WriteMakefileArgs);
+
+
 

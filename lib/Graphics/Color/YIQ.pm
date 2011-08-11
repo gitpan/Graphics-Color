@@ -1,8 +1,14 @@
 package Graphics::Color::YIQ;
+BEGIN {
+  $Graphics::Color::YIQ::VERSION = '0.29';
+}
 use Moose;
 use MooseX::Aliases;
 
 extends qw(Graphics::Color);
+
+# ABSTRACT: YIQ color space
+
 
 has 'luminance' => (
     is => 'rw',
@@ -10,19 +16,26 @@ has 'luminance' => (
     default => 1,
     alias => 'y'
 );
+
+
 has 'in_phase' => (
     is => 'rw',
     isa => 'Num',
     default => 1,
     alias => 'i'
 );
+
+
 has 'quadrature' => (
     is => 'rw',
     isa => 'Num',
     default => 1,
     alias => 'q'
 );
+
+
 has 'name' => ( is => 'rw', isa => 'Str' );
+
 
 sub as_string {
     my ($self) = @_;
@@ -32,13 +45,13 @@ sub as_string {
     );
 }
 
+
 sub as_array {
     my ($self) = @_;
 
     return ($self->luminance, $self->in_phase, $self->quadrature);
 }
 
-__PACKAGE__->meta->make_immutable;
 
 sub equal_to {
     my ($self, $other) = @_;
@@ -58,13 +71,30 @@ sub equal_to {
     return 1;
 }
 
+
+__PACKAGE__->meta->make_immutable;
 no Moose;
 1;
 __END__
+=pod
 
 =head1 NAME
 
 Graphics::Color::YIQ - YIQ color space
+
+=head1 VERSION
+
+version 0.29
+
+=head1 SYNOPSIS
+
+    use Graphics::Color::YIQ;
+
+    my $color = Graphics::Color::YIQ->new({
+        luminance   => 0.5,
+        in_phase    => .5,
+        quadrature  => .25,
+    });
 
 =head1 DESCRIPTION
 
@@ -75,31 +105,7 @@ Graphics::Color::YIQ represents a Color in an YIQ color space.
 I couldn't find clear information on the bounds of each value, so at the
 moment there are none.
 
-=head1 SYNOPSIS
-
-    use Graphics::Color::YIQ;
-
-    my $color = Graphics::Color::YIQ->new({
-        luminance   => 0.5,
-        in_phase    => .5
-        quadrature  => .25,
-    });
-
-=head1 CONSTRUCTOR
-
-=head2 Graphics::Color::YIQ->new(%options);
-
-Creates a new Graphics::Color::YIQ.
-
-=head1 METHODS
-
-=head2 equal_to
-
-Compares this color to the provided one.  Returns 1 if true, else 0;
-
-=head2 not_equal_to
-
-The opposite of equal_to.
+=head1 ATTRIBUTES
 
 =head2 luminance
 
@@ -123,6 +129,12 @@ Set/Get the quadrature component of this Color.
 
 Get the name of this color.  Only valid if the color was created by name.
 
+=head2 not_equal_to
+
+The opposite of equal_to.
+
+=head1 METHODS
+
 =head2 as_string
 
 Get a string version of this Color in the form of
@@ -132,17 +144,20 @@ LUMINANCE,IN-PHASE,QUADRATURE
 
 Get the YIQ values as an array
 
+=head2 equal_to
+
+Compares this color to the provided one.  Returns 1 if true, else 0;
+
 =head1 AUTHOR
 
-Cory Watson, C<< <gphat@cpan.org> >>
+Cory G Watson <gphat@cpan.org>
 
-=head1 SEE ALSO
+=head1 COPYRIGHT AND LICENSE
 
-perl(1), L<http://en.wikipedia.org/wiki/YIQ>
+This software is copyright (c) 2011 by Cold Hard Code, LLC.
 
-=head1 COPYRIGHT & LICENSE
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
-Copyright 2008 - 2009 by Cory G Watson
+=cut
 
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.

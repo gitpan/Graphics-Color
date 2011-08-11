@@ -1,8 +1,13 @@
 package Graphics::Color::RGB;
+BEGIN {
+  $Graphics::Color::RGB::VERSION = '0.29';
+}
 use Moose;
 use MooseX::Aliases;
 
 extends qw(Graphics::Color);
+
+# ABSTRACT: RGB color model
 
 use Color::Library;
 use Graphics::Color::HSL;
@@ -10,31 +15,41 @@ use Graphics::Color::HSV;
 
 use Graphics::Color::Types qw(NumberOneOrLess);
 
+
 has 'red' => (
     is => 'rw',
     isa => NumberOneOrLess,
     default => 1,
     alias  => 'r'
 );
+
+
 has 'green' => (
     is => 'rw',
     isa => NumberOneOrLess,
     default => 1,
     alias => 'g'
 );
+
+
 has 'blue' => (
     is => 'rw',
     isa => NumberOneOrLess,
     default => 1,
     alias => 'b'
 );
+
+
 has 'alpha' => (
     is => 'rw',
     isa => NumberOneOrLess,
     default => 1,
     alias => 'a'
 );
+
+
 has 'name' => ( is => 'rw', isa => 'Str' );
+
 
 sub as_string {
     my ($self) = @_;
@@ -45,6 +60,7 @@ sub as_string {
     );
 }
 
+
 sub as_integer_string {
     my ($self) = @_;
 
@@ -53,11 +69,13 @@ sub as_integer_string {
     );
 }
 
+
 sub as_css_hex {
     my ($self) = @_;
 
     return $self->as_hex_string('#');
 }
+
 
 sub as_hex_string {
     my ($self, $prepend) = @_;
@@ -69,6 +87,7 @@ sub as_hex_string {
     );
 }
 
+
 sub as_percent_string {
     my ($self) = @_;
 
@@ -77,17 +96,20 @@ sub as_percent_string {
     );
 }
 
+
 sub as_array {
     my ($self) = @_;
 
     return ($self->red, $self->green, $self->blue);
 }
 
+
 sub as_array_with_alpha {
     my ($self) = @_;
 
     return ($self->red, $self->green, $self->blue, $self->alpha);
 }
+
 
 sub equal_to {
     my ($self, $other) = @_;
@@ -110,6 +132,7 @@ sub equal_to {
     return 1;
 }
 
+
 sub from_color_library {
 	my ($self, $id) = @_;
 
@@ -130,6 +153,7 @@ sub from_color_library {
 		blue => $b / 255
 	);
 }
+
 
 sub from_hex_string {
     my ($self, $hex) = @_;
@@ -158,6 +182,7 @@ sub from_hex_string {
     # Not a valid hex color
     return undef;
 }
+
 
 sub to_hsl {
 	my ($self) = @_;
@@ -208,6 +233,7 @@ sub to_hsl {
 		hue => $h, saturation => $s, lightness => $l, alpha => $self->alpha
 	);
 }
+
 
 sub to_hsv {
 	my ($self) = @_;
@@ -261,10 +287,25 @@ __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
 __END__
+=pod
 
 =head1 NAME
 
 Graphics::Color::RGB - RGB color model
+
+=head1 VERSION
+
+version 0.29
+
+=head1 SYNOPSIS
+
+    use Graphics::Color::RGB;
+
+    my $color = Graphics::Color::RGB->new({
+        red     => 1,
+        blue    => .31,
+        green   => .25,
+    });
 
 =head1 DESCRIPTION
 
@@ -277,31 +318,7 @@ blue => 1, alpha => 1).
 
 Convenience methods are supplied to convert to various string values.
 
-=head1 SYNOPSIS
-
-    use Graphics::Color::RGB;
-
-    my $color = Graphics::Color::RGB->new({
-        red     => 1,
-        blue    => .31,
-        green   => .25,
-    });
-
-=head1 CONSTRUCTOR
-
-=head2 Graphics::Color::RGB->new(%options)
-
-Creates a new Graphics::Color::RGB.
-
-=head1 METHODS
-
-=head2 equal_to
-
-Compares this color to the provided one.  Returns 1 if true, else 0;
-
-=head2 not_equal_to
-
-The opposite of equal_to.
+=head1 ATTRIBUTES
 
 =head2 red
 
@@ -331,13 +348,16 @@ Set/Get the alpha component of this Color. Aliased to 'a' as well.
 
 Get the name of this color.  Only valid if the color was created by name.
 
-=head2 as_array
+=head1 METHODS
 
-Get the RGB values as an array
+=head2 as_string
 
-=head2 as_array_with_alpha
+Get a string version of this Color in the form of RED,GREEN,BLUE,ALPHA
 
-Get the RGBA values as an array
+=head2 as_integer_string
+
+Return an integer formatted value for this color.  This format is suitable for
+CSS RGBA values.
 
 =head2 as_css_hex
 
@@ -350,21 +370,28 @@ channel because, per the W3C, there is no hexadecimal notiation for an RGBA
 value. Optionally allows you to include a string that will be prepended. This
 is a common way to add the C<#>.
 
-=head2 as_integer_string
-
-Return an integer formatted value for this color.  This format is suitable for
-CSS RGBA values.
-
 =head2 as_percent_string
 
 Return a percent formatted value for this color.  This format is suitable for
 CSS RGBA values.
 
-=head2 as_string
+=head2 as_array
 
-Get a string version of this Color in the form of RED,GREEN,BLUE,ALPHA
+Get the RGB values as an array.
 
-=head2 from_color_library(color-id)
+=head2 as_array_with_alpha
+
+Get the RGBA values as an array
+
+=head2 equal_to
+
+Compares this color to the provided one.  Returns 1 if true, else 0;
+
+=head2 not_equal_to
+
+The opposite of equal_to.
+
+=head2 from_color_library ($color_id)
 
 Attempts to retrieve the specified color-id using L<Color::Library>.  The
 result is then converted into a Graphics::Color::RGB object.
@@ -384,15 +411,14 @@ Creates this RGB color in HSV space.  Returns a L<Graphics::Color::HSV> object.
 
 =head1 AUTHOR
 
-Cory Watson, C<< <gphat@cpan.org> >>
+Cory G Watson <gphat@cpan.org>
 
-=head1 SEE ALSO
+=head1 COPYRIGHT AND LICENSE
 
-perl(1), L<http://en.wikipedia.org/wiki/RGB_color_space>
+This software is copyright (c) 2011 by Cold Hard Code, LLC.
 
-=head1 COPYRIGHT & LICENSE
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
-Copyright 2008 - 2009 by Cory G Watson
+=cut
 
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.

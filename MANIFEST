@@ -1,12 +1,11 @@
 Changes
-inc/Module/Install.pm
-inc/Module/Install/Base.pm
-inc/Module/Install/Can.pm
-inc/Module/Install/Fetch.pm
-inc/Module/Install/Makefile.pm
-inc/Module/Install/Metadata.pm
-inc/Module/Install/Win32.pm
-inc/Module/Install/WriteAll.pm
+LICENSE
+MANIFEST
+META.json
+META.yml
+Makefile.PL
+README
+README.mkdn
 lib/Graphics/Color.pm
 lib/Graphics/Color/CMYK.pm
 lib/Graphics/Color/Equal.pm
@@ -16,10 +15,6 @@ lib/Graphics/Color/RGB.pm
 lib/Graphics/Color/Types.pm
 lib/Graphics/Color/YIQ.pm
 lib/Graphics/Color/YUV.pm
-Makefile.PL
-MANIFEST			This list of files
-META.yml
-README
 t/00-load.t
 t/01-cmyk.t
 t/01-hsl.t
@@ -30,4 +25,5 @@ t/01-yuv.t
 t/11-color-library.t
 t/author/pod-coverage.t
 t/author/pod.t
-TODO
+t/release-pod-syntax.t
+t/release-synopsis.t

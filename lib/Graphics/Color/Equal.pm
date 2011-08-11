@@ -1,7 +1,13 @@
 package Graphics::Color::Equal;
+BEGIN {
+  $Graphics::Color::Equal::VERSION = '0.29';
+}
 use Moose::Role;
 
+# ABSTRACT: Moose equality role
+
 requires 'equal_to';
+
 
 sub not_equal_to {
     my ($self, $other) = @_;
@@ -11,15 +17,20 @@ sub not_equal_to {
 no Moose;
 1;
 __END__
+=pod
+
 =head1 NAME
 
 Graphics::Color::Equal - Moose equality role
 
-=head1 DESCRIPTION
+=head1 VERSION
 
-Graphics::Color::Equal is a Moose role for equality.
+version 0.29
 
 =head1 SYNOPSIS
+
+  package Graphics::Color::Foo;
+  use Moose;
 
   with 'Graphics::Color::Equal';
 
@@ -28,6 +39,10 @@ Graphics::Color::Equal is a Moose role for equality.
       
       # compare and return!
   }
+
+=head1 DESCRIPTION
+
+Graphics::Color::Equal is a Moose role for equality.
 
 =head1 METHODS
 
@@ -41,11 +56,14 @@ Provided you implement C<equal_to>, this will be implemented for you!
 
 =head1 AUTHOR
 
-Cory Watson <gphat@cpan.org>
+Cory G Watson <gphat@cpan.org>
 
-=head1 COPYRIGHT & LICENSE
+=head1 COPYRIGHT AND LICENSE
 
-Copyright 2008 - 2009 by Cory G Watson
+This software is copyright (c) 2011 by Cold Hard Code, LLC.
 
-You can redistribute and/or modify this code under the same terms as Perl
-itself.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
+

@@ -1,20 +1,13 @@
-NAME
 
-Graphics::Color - Device and library agnostic color spaces.
 
-SYNOPSIS
+This archive contains the distribution Graphics-Color,
+version 0.29:
 
-Graphics color is a device and library agnostic system for creating and
-manipulating colors in various color spaces.
+  Device and library agnostic color spaces.
 
-  my $color = Graphics::Color::RGB->new(
-      red => .5, green => .5, blue => .5, alpha => .5
-  );
-  say $color->as_string;
+This software is copyright (c) 2011 by Cold Hard Code, LLC.
 
-DISCLAIMER
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
-I'm not an art student or a wizard of arcane color knowledge.  I'm a normal
-programmer with a penchant for things graphical.  Hence this module is likely
-incomplete in some places.  Patches are encouraged.  I've intentions of adding
-more color spaces as well as conversion routines (where applicable).
+

@@ -1,10 +1,16 @@
 package Graphics::Color::YUV;
+BEGIN {
+  $Graphics::Color::YUV::VERSION = '0.29';
+}
 use Moose;
 use MooseX::Aliases;
 
 extends qw(Graphics::Color);
 
+# ABSTRACT: YUV color space
+
 use Graphics::Color::Types qw(NumberOneOrLess);
+
 
 has 'luma' => (
     is => 'rw',
@@ -12,19 +18,26 @@ has 'luma' => (
     default => 0,
     alias => 'y'
 );
+
+
 has 'blue_luminance' => (
     is => 'rw',
     isa => NumberOneOrLess,
     default => 0,
     alias => 'u'
 );
+
+
 has 'red_luminance' => (
     is => 'rw',
     isa => NumberOneOrLess,
     default => 0,
     alias => 'v'
 );
+
+
 has 'name' => ( is => 'rw', isa => 'Str' );
+
 
 sub as_string {
     my ($self) = @_;
@@ -34,11 +47,13 @@ sub as_string {
     );
 }
 
+
 sub as_array {
     my ($self) = @_;
 
     return ($self->luma, $self->blue_luminance, $self->red_luminance);
 }
+
 
 sub equal_to {
     my ($self, $other) = @_;
@@ -58,6 +73,7 @@ sub equal_to {
     return 1;
 }
 
+
 # TODO RGB Conversion
 # OLD STYLE : Y' = 0.299R + 0.587G + 0.114B
 # NEW STYLE: Y' = 0.2125R + 0.7154G + 0.0721B
@@ -71,14 +87,15 @@ __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
 __END__
+=pod
 
 =head1 NAME
 
 Graphics::Color::YUV - YUV color space
 
-=head1 DESCRIPTION
+=head1 VERSION
 
-Graphics::Color::YUV represents a Color in an Y'UV color space.
+version 0.29
 
 =head1 SYNOPSIS
 
@@ -86,25 +103,15 @@ Graphics::Color::YUV represents a Color in an Y'UV color space.
 
     my $color = Graphics::Color::YUV->new({
         luma            => .5,
-        blue_luminance  => .5
+        blue_luminance  => .5,
         red_luminance   => .25,
     });
 
-=head1 CONSTRUCTOR
+=head1 DESCRIPTION
 
-=head2 Graphics::Color::YUV->new(%options);
+Graphics::Color::YUV represents a Color in an Y'UV color space.
 
-Creates a new Graphics::Color::YUV.
-
-=head1 METHODS
-
-=head2 equal_to
-
-Compares this color to the provided one.  Returns 1 if true, else 0;
-
-=head2 not_equal_to
-
-The opposite of equal_to.
+=head1 ATTRIBUTES
 
 =head2 luma
 
@@ -124,30 +131,39 @@ Set/Get the blue_luminance component of this Color. Aliased to u.
 
 Set/Get the red_luminance component of this Color. Aliased to v.
 
+=head1 METHODS
+
 =head2 name
 
 Get the name of this color.  Only valid if the color was created by name.
 
 =head2 as_string
 
-Get a string version of this Color in the form of
+Get a string version of this Color in the form of:
 LUMA,BLUE_LUMINENCE,RED_LUMINANCE
 
 =head2 as_array
 
 Get the YUV values as an array
 
+=head2 equal_to
+
+Compares this color to the provided one.  Returns 1 if true, else 0;
+
+=head2 not_equal_to
+
+The opposite of equal_to.
+
 =head1 AUTHOR
 
-Cory Watson, C<< <gphat@cpan.org> >>
+Cory G Watson <gphat@cpan.org>
 
-=head1 SEE ALSO
+=head1 COPYRIGHT AND LICENSE
 
-perl(1), L<http://en.wikipedia.org/wiki/YUV>
+This software is copyright (c) 2011 by Cold Hard Code, LLC.
 
-=head1 COPYRIGHT & LICENSE
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
-Copyright 2008 - 2009 by Cory G Watson
+=cut
 
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
