@@ -4,14 +4,14 @@ Graphics::Color - Device and library agnostic color spaces.
 
 # VERSION
 
-version 0.29
+version 0.30
 
 # SYNOPSIS
 
-  my $color = Graphics::Color::RGB->new(
-      red => .5, green => .5, blue => .5, alpha => .5
-  );
-  say $color->as_string;
+    my $color = Graphics::Color::RGB->new(
+        red => .5, green => .5, blue => .5, alpha => .5
+    );
+    say $color->as_string;
 
 # DESCRIPTION
 
@@ -29,17 +29,17 @@ more color spaces as well as conversion routines (where applicable).
 
 The following color types are supported.
 
-[CMYK](http://search.cpan.org/perldoc?Graphics::Color::CMYK)
+[CMYK](https://metacpan.org/pod/Graphics::Color::CMYK)
 
-[HSL](http://search.cpan.org/perldoc?Graphics::Color::HSL)
+[HSL](https://metacpan.org/pod/Graphics::Color::HSL)
 
-[HSV](http://search.cpan.org/perldoc?Graphics::Color::HSV)
+[HSV](https://metacpan.org/pod/Graphics::Color::HSV)
 
-[RGB](http://search.cpan.org/perldoc?Graphics::Color::RGB)
+[RGB](https://metacpan.org/pod/Graphics::Color::RGB)
 
-[YIQ](http://search.cpan.org/perldoc?Graphics::Color::YIQ)
+[YIQ](https://metacpan.org/pod/Graphics::Color::YIQ)
 
-[YUV](http://search.cpan.org/perldoc?Graphics::Color::YUV)
+[YUV](https://metacpan.org/pod/Graphics::Color::YUV)
 
 # METHODS
 
@@ -48,18 +48,18 @@ The following color types are supported.
 Clone this color but allow one of more of it's attributes to change by passing
 in a hashref of options:
 
-  my $new = $color->derive({ attr => $newvalue });
+    my $new = $color->derive({ attr => $newvalue });
 
 The returned color will be identical to the cloned one, save the attributes
 specified.
 
-## equal_to
+## equal\_to
 
 Compares this color to the provided one.  Returns 1 if true, else 0;
 
-## not_equal_to
+## not\_equal\_to
 
-The opposite of equal_to.
+The opposite of equal\_to.
 
 # AUTHOR
 
@@ -67,7 +67,7 @@ Cory G Watson <gphat@cpan.org>
 
 # COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Cold Hard Code, LLC.
+This software is copyright (c) 2014 by Cold Hard Code, LLC.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

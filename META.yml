@@ -5,10 +5,12 @@ author:
 build_requires:
   Test::More: 0
   Test::Number::Delta: 0
+  strict: 0
+  warnings: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.200007, CPAN::Meta::Converter version 2.110440'
+generated_by: 'Dist::Zilla version 5.012, CPAN::Meta::Converter version 2.133380'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -25,6 +27,7 @@ requires:
   MooseX::Types: 0
   MooseX::Types::Moose: 0
 resources:
-  homepage: http://github.com/gphat/graphics-color
-  repository: http://github.com/gphat/graphics-color
-version: 0.29
+  bugtracker: https://github.com/gphat/graphics-color/issues
+  homepage: https://github.com/gphat/graphics-color
+  repository: https://github.com/gphat/graphics-color.git
+version: 0.30
