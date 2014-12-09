@@ -1,5 +1,5 @@
 package Graphics::Color::HSL;
-$Graphics::Color::HSL::VERSION = '0.30';
+$Graphics::Color::HSL::VERSION = '0.31';
 use Moose;
 use MooseX::Aliases;
 
@@ -116,7 +116,7 @@ Graphics::Color::HSL - HSL color space
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 SYNOPSIS
 

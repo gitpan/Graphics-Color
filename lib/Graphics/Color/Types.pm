@@ -1,5 +1,5 @@
 package Graphics::Color::Types;
-$Graphics::Color::Types::VERSION = '0.30';
+$Graphics::Color::Types::VERSION = '0.31';
 use MooseX::Types -declare => [qw(
     Number360OrLess NumberOneOrLess
 )];
@@ -28,7 +28,7 @@ Graphics::Color::Types
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 AUTHOR
 

@@ -1,5 +1,5 @@
 package Graphics::Color::RGB;
-$Graphics::Color::RGB::VERSION = '0.30';
+$Graphics::Color::RGB::VERSION = '0.31';
 use Moose;
 use MooseX::Aliases;
 
@@ -295,7 +295,7 @@ Graphics::Color::RGB - RGB color model
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 SYNOPSIS
 

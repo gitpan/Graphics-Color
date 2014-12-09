@@ -1,5 +1,5 @@
 package Graphics::Color::Equal;
-$Graphics::Color::Equal::VERSION = '0.30';
+$Graphics::Color::Equal::VERSION = '0.31';
 use Moose::Role;
 
 # ABSTRACT: Moose equality role
@@ -25,7 +25,7 @@ Graphics::Color::Equal - Moose equality role
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 SYNOPSIS
 

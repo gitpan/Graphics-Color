@@ -1,5 +1,5 @@
 package Graphics::Color::YIQ;
-$Graphics::Color::YIQ::VERSION = '0.30';
+$Graphics::Color::YIQ::VERSION = '0.31';
 use Moose;
 use MooseX::Aliases;
 
@@ -84,7 +84,7 @@ Graphics::Color::YIQ - YIQ color space
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 SYNOPSIS
 

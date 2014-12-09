@@ -1,5 +1,5 @@
 package Graphics::Color::CMYK;
-$Graphics::Color::CMYK::VERSION = '0.30';
+$Graphics::Color::CMYK::VERSION = '0.31';
 use Moose;
 use MooseX::Aliases;
 
@@ -108,7 +108,7 @@ Graphics::Color::CMYK - CMYK color model
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 SYNOPSIS
 

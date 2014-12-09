@@ -1,5 +1,5 @@
 package Graphics::Color::HSV;
-$Graphics::Color::HSV::VERSION = '0.30';
+$Graphics::Color::HSV::VERSION = '0.31';
 use Moose;
 use MooseX::Aliases;
 
@@ -178,7 +178,7 @@ Graphics::Color::HSV
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 SYNOPSIS
 

@@ -1,5 +1,5 @@
 package Graphics::Color::YUV;
-$Graphics::Color::YUV::VERSION = '0.30';
+$Graphics::Color::YUV::VERSION = '0.31';
 use Moose;
 use MooseX::Aliases;
 
@@ -95,7 +95,7 @@ Graphics::Color::YUV - YUV color space
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 SYNOPSIS
 

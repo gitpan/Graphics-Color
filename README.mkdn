@@ -4,7 +4,7 @@ Graphics::Color - Device and library agnostic color spaces.
 
 # VERSION
 
-version 0.30
+version 0.31
 
 # SYNOPSIS
 

@@ -1,5 +1,5 @@
 package Graphics::Color;
-$Graphics::Color::VERSION = '0.30';
+$Graphics::Color::VERSION = '0.31';
 use Moose;
 use Moose::Util::TypeConstraints;
 
@@ -39,7 +39,7 @@ Graphics::Color - Device and library agnostic color spaces.
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 SYNOPSIS
 
